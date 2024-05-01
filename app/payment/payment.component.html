@@ -1,0 +1,40 @@
+
+
+<div>
+    <h2>Payment Details</h2>
+    <form (ngSubmit)="savePayment()">
+      <label for="cusName">Customer Name:</label>
+      <input type="text" id="cusName" [(ngModel)]="payment.cus_Name" name="cusName" required>
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" [(ngModel)]="payment.cardNumber" name="cardNumber" required>
+      <label for="expirationDate">Expiration Date:</label>
+      <input type="text" id="expirationDate" [(ngModel)]="payment.ExpirationDate" name="expirationDate" required>
+      <label for="securityCode">Security Code:</label>
+      <input type="text" id="securityCode" [(ngModel)]="payment.SecurityCode" name="securityCode" required>
+      <button type="submit">Save</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Card Number</th>
+          <th>Expiration Date</th>
+          <th>Security Code</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of paymentList">
+          <td>{{ payment.cus_Name }}</td>
+          <td>{{ payment.cardNumber }}</td>
+          <td>{{ payment.ExpirationDate }}</td>
+          <td>{{ payment.SecurityCode }}</td>
+          <td>
+            <button (click)="updatePayment(payment)">Update</button>
+            <button (click)="deletePayment(payment.PaymentId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
